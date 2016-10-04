@@ -2,11 +2,19 @@ button {
   font-size: 2rem;
 }
 
+h3 {
+  text-align: center;
+}
+
 .container {
-  max-width: 30%;
+  max-width: 50%;
 }
 
 .operator {
   /*color: white;*/
   background-color: papayawhip;
+}
+
+#value, #equation {
+  text-align: right;
 }
