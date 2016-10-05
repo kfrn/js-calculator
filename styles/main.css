@@ -1,17 +1,23 @@
+body {
+  font-family: 'Orbitron', sans-serif;
+}
+
 button {
   font-size: 2rem;
+  margin: 1rem auto;
 }
 
 h3 {
   text-align: center;
+  margin: 2.5rem auto;
 }
+
 
 .container {
   max-width: 50%;
 }
 
 .operator {
-  /*color: white;*/
   background-color: papayawhip;
 }
 
@@ -19,8 +25,8 @@ h3 {
   text-align: right;
   border-radius: 4px;
   border: 1px solid #bbb;
-  margin-bottom: 1rem;
-  padding-right: 10px;
+  margin: 1.5rem auto;
+  padding-right: 15px;
   background-color: #e2e0e0;
 }
 
