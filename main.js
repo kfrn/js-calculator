@@ -15,7 +15,6 @@ function getButton(evt) {
     if (evt.target.id === "AC") {
         clearResult();
     } else if (evt.target.id === "CE") {
-        //clear last value function
         clearLast();
     } else if (evt.target.id === "equals") {
         calculateResult();
