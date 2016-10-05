@@ -40,6 +40,8 @@ function getButton(evt) {
 
 function calculateResult() {
     result = eval(equation);
+    equation = "";
+    equation = result;
     console.log(result);
 }
 
