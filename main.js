@@ -12,33 +12,39 @@ function start () {
 
 
     var buttons = document.getElementsByTagName("button");
-    // console.log(buttons);
+    console.log(buttons);
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener("click", getButton);
     }
     // buttons.addEventListener("click", initializeButtons);
 }
 
+var equation = "";
+var result = 0;
 
 function getButton(evt) {
-    console.log(evt.target.value);
+    if (evt.target.id === "AC") {
+        clearResult();
+    } else if (evt.target.id === "CE") {
+        //clear last value function
+    } else if (evt.target.id === "equals") {
+        calculateResult();
+    } else {
+        equation += evt.target.value;
+        console.log(equation);
+    }
+    // console.log(evt.target.value);
 }
 
-function initializeButtons () {
-    alert("This is working")
-}
 
-
-var equation = "2+2+2+2";
 
 function calculateResult() {
-    var result = 0;
-    console.log(result);
     result = eval(equation);
     console.log(result);
 }
 
 function clearResult() {
-    var result = 0;
+    result = 0;
+    equation = "";
     console.log(result);
 }
