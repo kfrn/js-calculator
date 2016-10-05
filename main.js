@@ -1,3 +1,8 @@
+// TO DO LIST
+// 1. Find workaround for JS rounding issue
+// 2. Print error message if equation input is totally nonsensical
+
+
 document.addEventListener('DOMContentLoaded', start);
 
 function start () {
