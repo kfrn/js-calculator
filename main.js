@@ -16,6 +16,7 @@ function getButton(evt) {
         clearResult();
     } else if (evt.target.id === "CE") {
         //clear last value function
+        clearLast();
     } else if (evt.target.id === "equals") {
         calculateResult();
     } else {
@@ -40,4 +41,19 @@ function clearResult() {
     document.getElementById("result").innerHTML = "<p>" + result + "</p>";
     document.getElementById("equation").innerHTML = "<p>0</p>";
     console.log(result);
+}
+
+function clearLast() {
+  var lastDigit = equation[equation.length - 1];
+  if (lastDigit === "+" || lastDigit === "-" || lastDigit === "*" || lastDigit === "/") {
+    equation = equation.slice(0, equation.length -1);
+    document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
+  }
+  // else () {
+  //   // find out how many digits there are at the end of the string, back til operator
+  //   // then delete them.
+  //   // REgex????
+  // }
+  console.log(equation);
+  document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
 }
