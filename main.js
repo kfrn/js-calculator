@@ -12,7 +12,7 @@ function start () {
 
 
     var buttons = document.getElementsByTagName("button");
-    console.log(buttons);
+    // console.log(buttons);
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener("click", getButton);
     }
@@ -32,6 +32,7 @@ function getButton(evt) {
     } else {
         equation += evt.target.value;
         console.log(equation);
+        document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
     }
     // console.log(evt.target.value);
 }
@@ -40,13 +41,16 @@ function getButton(evt) {
 
 function calculateResult() {
     result = eval(equation);
+    console.log(result);
+    document.getElementById("result").innerHTML = "<p>" + result + "</p>";
     equation = "";
     equation = result;
-    console.log(result);
 }
 
 function clearResult() {
     result = 0;
     equation = "";
+    document.getElementById("result").innerHTML = "<p>" + result + "</p>";
+    document.getElementById("equation").innerHTML = "<p>0</p>";
     console.log(result);
 }
