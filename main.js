@@ -48,12 +48,11 @@ function clearLast() {
   if (lastDigit === "+" || lastDigit === "-" || lastDigit === "*" || lastDigit === "/") {
     equation = equation.slice(0, equation.length -1);
     document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
+  } else {
+    var operators = /[\/\+\-\*]/g; // To match all arithmetic operators
+    var tempArray = equation.split(operators);
+    var lastElementLength = tempArray[tempArray.length -1].length;
+    equation = equation.slice(0, equation.length - lastElementLength);
   }
-  // else () {
-  //   // find out how many digits there are at the end of the string, back til operator
-  //   // then delete them.
-  //   // REgex????
-  // }
-  console.log(equation);
   document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
 }
