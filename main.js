@@ -33,9 +33,15 @@ function getButton(evt) {
 
 function calculateResult() {
     var illegalExpression = /[\/\*][\/\*]/;
-    if (illegalExpression.test(equation) && equation.match(illegalExpression) != "**") {
+    var twoPlusOrMinus = /(\+\+|\-\-)/
+    var alsoIllegal = /[\+\-][\*\/]/;
+    if ( (illegalExpression.test(equation) && equation.match(illegalExpression) != "**") || alsoIllegal.test(equation) ) {
         result = "Illegal!!";
-    } else {
+    }
+    else if (twoPlusOrMinus.test(equation)) {
+        result = "Javascript don't like it";
+    }
+    else {
         result = eval(equation);
     }
     console.log(result);
