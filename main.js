@@ -33,7 +33,7 @@ function getButton(evt) {
 
 function calculateResult() {
     var illegalExpression = /[\/\*][\/\*]/;
-    if (equation.match(illegalExpression) !== null && equation.match(illegalExpression) != "**") {
+    if (illegalExpression.test(equation) && equation.match(illegalExpression) != "**") {
         result = "Illegal!!";
     } else {
         result = eval(equation);
