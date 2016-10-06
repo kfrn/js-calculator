@@ -32,9 +32,9 @@ function getButton(evt) {
 }
 
 function calculateResult() {
-    var illegalExpression = /[\/\*][\/\*]/;
-    var twoPlusOrMinus = /(\+\+|\-\-)/
-    var alsoIllegal = /[\+\-][\*\/]/;
+    var illegalExpression = /[\/\*][\/\*]/; // matches two characters: each is either * or /
+    var twoPlusOrMinus = /(\+\+|\-\-)/ // matches two pluses together OR two minuses together
+    var alsoIllegal = /[\+\-][\*\/]/; // matches two characters; first is + or -, second is * or /
     if ( (illegalExpression.test(equation) && equation.match(illegalExpression) != "**") || alsoIllegal.test(equation) ) {
         result = "Illegal!!";
     }
