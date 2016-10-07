@@ -20,7 +20,8 @@ function getButton(evt) {
     } else {
         equation += evt.target.value;
         console.log(equation);
-        document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
+        updateDOM("equation", equation);
+        // document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
     }
 }
 
@@ -38,7 +39,8 @@ function calculateResult() {
         result = eval(equation);
     }
     console.log(result);
-    document.getElementById("result").innerHTML = "<p>" + result + "</p>";
+    updateDOM("result", result)
+    // document.getElementById("result").innerHTML = "<p>" + result + "</p>";
     equation = "";
     equation = result;
 }
@@ -46,8 +48,10 @@ function calculateResult() {
 function clearResult() {
     result = 0;
     equation = "";
-    document.getElementById("result").innerHTML = "<p>" + result + "</p>";
-    document.getElementById("equation").innerHTML = "<p>0</p>";
+    updateDOM("result", result);
+    updateDOM("equation", 0);
+    // document.getElementById("result").innerHTML = "<p>" + result + "</p>";
+    // document.getElementById("equation").innerHTML = "<p>0</p>";
     console.log(result);
 }
 
@@ -65,9 +69,15 @@ function clearLast() {
 }
 
 function isEmpty() {
-    if (equation.length === 0) {
-      document.getElementById("equation").innerHTML = "<p>" + 0 + "</p>";
+  if (equation.length === 0) {
+      updateDOM("equation", 0);
+      // document.getElementById("equation").innerHTML = "<p>" + 0 + "</p>";
   } else {
-      document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
+      updateDOM("equation", equation);
+      // document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
   }
+}
+
+function updateDOM(elementID, input) {
+    document.getElementById(elementID).innerHTML = "<p>" + input + "</p>";
 }
