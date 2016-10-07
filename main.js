@@ -62,12 +62,35 @@ function clearLast() {
   var lastDigit = equation[equation.length - 1];
   if (lastDigit === "+" || lastDigit === "-" || lastDigit === "*" || lastDigit === "/") {
     equation = equation.slice(0, equation.length -1);
-    document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
+    // document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
   } else {
     var operators = /[\/\+\-\*]/g; // To match all arithmetic operators
     var tempArray = equation.split(operators);
     var lastElementLength = tempArray[tempArray.length -1].length;
     equation = equation.slice(0, equation.length - lastElementLength);
   }
-  document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
+  // document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
+}
+
+function clearLast() {
+  var lastDigit = equation[equation.length - 1];
+  if (lastDigit === "+" || lastDigit === "-" || lastDigit === "*" || lastDigit === "/") {
+    equation = equation.slice(0, equation.length -1);
+    // document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
+  } else {
+    var operators = /[\/\+\-\*]/g; // To match all arithmetic operators
+    var tempArray = equation.split(operators);
+    var lastElementLength = tempArray[tempArray.length -1].length;
+    equation = equation.slice(0, equation.length - lastElementLength);
+  }
+  // document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
+  isEmpty();
+}
+
+function isEmpty() {
+    if (equation.length === 0) {
+      document.getElementById("equation").innerHTML = "<p>" + 0 + "</p>";
+  } else {
+      document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
+  }
 }
