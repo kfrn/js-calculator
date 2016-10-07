@@ -19,31 +19,59 @@ function getButton(evt) {
         calculateResult();
     } else {
         equation += evt.target.value;
-        console.log(equation);
+        // console.log(equation);
         updateDOM("equation", equation);
         // document.getElementById("equation").innerHTML = "<p>" + equation + "</p>";
     }
 }
 
 function calculateResult() {
-    var illegalExpression = /[\/\*][\/\*]/; // matches two characters: each is either * or /
-    var twoPlusOrMinus = /(\+\+|\-\-)/ // matches two pluses together OR two minuses together
-    var alsoIllegal = /[\+\-][\*\/]/; // matches two characters; first is + or -, second is * or /
-    if ( (illegalExpression.test(equation) && equation.match(illegalExpression) != "**") || alsoIllegal.test(equation) ) {
-        result = "Illegal!!";
+    if (illegalExpression(equation) === false) {
+      updateDOM("result", "Illegal!");
     }
-    else if (twoPlusOrMinus.test(equation)) {
-        result = "Javascript don't like it";
-    }
+    // var illegalExpression = /[\/\*][\/\*]/; // matches two characters: each is either * or /
+    // var twoPlusOrMinus = /(\+\+|\-\-)/ // matches two pluses together OR two minuses together
+    // var alsoIllegal = /[\+\-][\*\/]/; // matches two characters; first is + or -, second is * or /
+    // if ( (illegalExpression.test(equation) && equation.match(illegalExpression) != "**") || alsoIllegal.test(equation) ) {
+    //     result = "Illegal!!";
+    // }
+    // else if (twoPlusOrMinus.test(equation)) {
+    //     result = "Javascript don't like it";
+    // }
     else {
         result = eval(equation);
+        updateDOM("result", result)
     }
-    console.log(result);
-    updateDOM("result", result)
-    // document.getElementById("result").innerHTML = "<p>" + result + "</p>";
     equation = "";
     equation = result;
+    // console.log(result);
+    // document.getElementById("result").innerHTML = "<p>" + result + "</p>";
 }
+
+function illegalExpression(equation) {
+  var equationArray = equation.split(/\d{1,}/g); // This returns an array of just the operators
+  console.log(equationArray);
+  var permitted = ["+", "-", "*", "/", "**", "*-", "/-", "+-", "-+", "*+", "/+", ""]; // permitted operators plus "" to count that out
+  console.log(permitted);
+  for (var i = 0; i < equationArray.length; i++) {
+    if (permitted.includes(equationArray[i]) === false ) {
+       return false;
+       console.log("false");
+      }
+      console.log(equationArray[i]);
+    }
+    return true;
+    console.log("true");
+  // does equation array contain anything not in permitted???
+  // IF item in equationArray does not equal anything in permitted - return false
+}
+
+
+//   function correctExpression () {
+//     var operationArray = equation.split(/\d{1,}/g).filter(function(el) {return el.length != 0});
+//     var allowedOperations = ["+-", "-+", "**", "*+", "*-", "/-", "/+", "+", "-", "*", "/"];
+//     return operationArray.every(function isLegal(element) { return allowedOperations.indexOf(element) > -1  });
+// }
 
 function clearResult() {
     result = 0;
@@ -52,7 +80,7 @@ function clearResult() {
     updateDOM("equation", 0);
     // document.getElementById("result").innerHTML = "<p>" + result + "</p>";
     // document.getElementById("equation").innerHTML = "<p>0</p>";
-    console.log(result);
+    // console.log(result);
 }
 
 function clearLast() {
